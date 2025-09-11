@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuestros Servicios - Semis by Marie</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> 
+</head>
+<body>
+  <header class="navbar">
+    <!-- Logo - Izquierda -->
+  <div class="logo">
+    <img src="Imagenes/nuevologo.jpg" alt="Logo Semis by Marie"/>
+    <h1>Semipermanentes by Marie</h1>
+    <p>"Esmaltado que dura. Belleza que brilla."</p>
+  </div>
+
+  <!-- Menú - Medio a Derecha -->
+  <nav class="menu-nav">
+    <ul class="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="productos.html">Tienda</a></li>
+      <li><a href="#">Panel de Control</a>
+      <!-- Submenú para usuarios autenticados -->
+      <ul id="user-submenu" style="display: none;">
+        <li><a href="dashboard-admin.html">Panel de Control (Admin)</a></li>
+        <li><a href="dashboard-cliente.html">Mi Cuenta</a></li>
+        <li><a href="#">Cerrar Sesión</a></li>
+      </ul>
+      </li>
+      <li><a href="#contacto">Agendar Cita</a></li>
+      <li>
+      <a href="carrito.html">
+      🛒 Carrito 
+      <span id="contador-carrito" class="carrito-indicador">0</span>
+      </a>
+      </li>
+      <li><a href="#" id="user-menu">Iniciar Sesión</a></li>
+    </ul>
+  </nav> 
+  </header>
+ 
+  <!-- Sección de Nuestros Servicios -->
+  <section id="servicios" class="seccion">
+    <h2>Nuestros Servicios</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="Imagenes/manos1.jpg" alt="Manicure"/>
+        <p><b>Manicure Profesional</b></p>
+        <br>
+        <p>Un buen manicure profesional no solo se trata de uñas bonitas. Se trata de sentirte bien contigo misma, de disfrutar de un momento de autocuidado y de lucir detalles perfectos sin preocuparte por su duración. En Semis by Marie, cada pincelada está hecha con amor, dedicación y mucha pasión por la belleza natural.</p>
+      </div>
+
+      <div class="card">
+        <img src="Imagenes/pie1.jpg" alt="Pedicure"/>
+        <p><b>Pedicure Completo</b></p>
+        <br>
+        <p>Creemos que la belleza comienza desde los pies. Nuestro servicio de pedicure está diseñado para brindarte una experiencia relajante y refrescante, dejando tus pies suaves, revitalizados y listos para lucir lo mejor en cada ocasión.</p>
+      </div>
+
+      <div class="card">
+        <img src="Imagenes/personalizado.jpg" alt="Diseño"/>
+        <p><b>Diseños Personalizados</b></p>
+        <br>
+        <p>¿Quieres lucir uñas únicas, creadas especialmente para ti?. En nuestro salón de manicura, no solo cuidamos tus manos, ¡también hacemos arte sobre ellas!</p>
+        <p>Desde lo más sencillo hasta detalles intrincados con flores, animales, glitter o incluso retratos, creamos diseños que reflejan tu personalidad, gustos o celebraciones especiales.</p>
+      </div>
+    
+  </section>
+
+  <!-- FOOTER -->
+    <footer>
+    <p>&copy; Mariel Barrientos 2025 | Todos los derechos reservados</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+<script src="JavaScript/app.js"></script>
+ 
+</body>
+</html>
