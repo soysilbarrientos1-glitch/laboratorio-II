@@ -1,0 +1,86 @@
+/* css/header-footer.css */
+
+/* Header fijo */
+.navbar-cliente {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  background: #e6639e; /* Fucsia */
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-cliente .logo img {
+  border-radius: 8px;
+}
+
+.navbar-cliente h1 {
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+}
+
+.nav-cliente a {
+  text-decoration: none;
+  color: white;
+  margin-left: 1.2rem;
+  font-weight: 600;
+  transition: transform 0.2s;
+}
+
+.nav-cliente a:hover {
+  transform: scale(1.05);
+  color: #ffd6ec; /* Rosa claro */
+}
+
+/* Contenido principal - ajustar margen superior para no quedar debajo del header fijo */
+.main-content {
+  margin-top: 70px; /* Ajusta según la altura del header */
+  padding: 1rem 0;
+}
+
+/* Footer fijo */
+.site-footer {
+  background: #eb6ca5; /* Fucsia */
+  color: white;
+  padding: 0.8rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.3rem;
+  margin: 0 6px;
+  transition: transform 0.2s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: #ffd6ec;
+  text-align: center;
+}

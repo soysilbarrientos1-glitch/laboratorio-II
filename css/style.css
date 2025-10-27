@@ -41,13 +41,7 @@
   .nav-toggle .hamburger::after {
     bottom: -7px;
   }
-  --fucsia-oscuro: #ad1457;
-  --blanco: #ffffff;
-  --gris-suave: #f0f0f0;
-  --texto: #333333;
-  --sombra: rgba(0, 0, 0, 0.1);
-}
-
+  
 /* === REINICIO GENERAL === */
 * {
   box-sizing: border-box;
@@ -60,10 +54,7 @@ body {
   background-color: var(--rosa-claro);
   color: var(--texto);
   line-height: 1.6;
-  /* reduced top padding so header is more compact */
-  padding-top: 120px;
-  padding-bottom: 80px;
-}
+ }
 
 /* === HEADER FIJO === */
 .navbar {
@@ -233,73 +224,111 @@ body {
 }
 
 /* === SECCIÓN PRINCIPAL === */
+/* Contenedor principal - asegurar que la página sea desplazable */
 .main-section {
+  min-height: 100vh;
+  padding-top: 180px; /* Ajusta según la altura del header */
+  padding-bottom: 80px;
+}
+
+/* Tarjeta de bienvenida - imagen a la izquierda, texto a la derecha */
+.welcome-card {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 2.5rem;
-  background-color: var(--rosa-medio);
-  border-radius: 16px;
-  margin: 0 auto 3rem auto;
-  max-width: 1200px;
-  gap: 2.5rem;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.aside-image {
-  max-width: 100%;
-  height: auto;
+  align-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background: #fff;
   border-radius: 12px;
-  width: 300px;
-  min-height: 250px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* Imagen del aside */
+.welcome-image {
+  flex: 0 0 400px; /* Ancho fijo de 400px */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.welcome-image:hover {
+  transform: scale(1.02);
+}
+
+.image-full {
+  width: 100%;
+  height: 400px;
   object-fit: cover;
-  box-shadow: 0 4px 10px var(--sombra);
+  display: block;
 }
 
-.content {
-  flex: 2;
-  padding-left: 2rem;
+/* Texto de bienvenida */
+.welcome-text {
+  flex: 1;
   text-align: center;
 }
 
-.welcome-title {
-  font-size: 2.4rem;
-  color: var(--fucsia);
-  margin-bottom: 1.2rem;
+.welcome-text h2 {
+  color: #e91e63;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  text-align: center;
 }
 
-.content p,
-.content h3 {
-  text-align: center;
-  margin-bottom: 1rem;
+.welcome-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 1rem 0;
+  color: #333;
 }
 
-/* Mover el título "Nuestros Servicios Destacados" más abajo */
-.content h3.destacados {
-  margin-top: 24px;
-  margin-bottom: 18px;
+
+
+/* Lista de servicios - sin viñetas, con bloques elegantes */
+.servicios-lista {
+  list-style: none; /* Eliminar viñetas */
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.servicios-lista li {
+  background: #fff;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.1rem;
+  color: #333;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.servicios-lista li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: var(--rosa-claro);
+  border-color: var(--fucsia);
+}
+
+/* Estilo del título de la lista */
+.destacados {
+  color: var(--fucsia);
   font-size: 1.25rem;
-  color: var(--fucsia-oscuro);
-  /* start hidden and animate from below with a small delay */
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 700ms cubic-bezier(.2,.9,.2,1) 220ms, transform 700ms cubic-bezier(.2,.9,.2,1) 220ms;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-@media (min-width: 900px) {
-  .content h3.destacados { margin-top: 48px; }
-}
+
 
 /* Ocultar el título hasta que el usuario haga scroll */
 .content h3.destacados.visible {
@@ -337,29 +366,6 @@ body {
 /* Optional slight stagger helper for groups: use inline style or JS to add delays per item */
 .reveal-stagger > .reveal-on-scroll { transition-delay: 120ms; }
 
-/* === LISTA DE SERVICIOS === */
-.servicios-lista {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 1.5rem 0;
-}
-
-.servicios-lista li {
-  background: var(--blanco);
-  margin: 0.5rem 0;
-  padding: 0.8rem 1rem;
-  border-left: 6px solid var(--fucsia);
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  font-size: 1.1rem;
-}
-
-.servicios-lista li:hover {
-  transform: translateX(5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background: var(--rosa-claro);
-}
 
 /* === BOTONES FUERA DEL MENÚ === */
 .btn-primary,

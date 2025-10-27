@@ -24,7 +24,7 @@ $user = $result->fetch_assoc();
 
 if ($user && password_verify($password, $user['password'])) {
     // Obtener el nombre del rol desde la tabla roles
-    $stmtRol = $conn->prepare("SELECT nombre_rol FROM roles WHERE id_rol = ?");
+    $stmtRol = $conn->prepare("SELECT nombre_rol FROM rol WHERE id_rol = ?");
     $stmtRol->bind_param("i", $user['id_rol']);
     $stmtRol->execute();
     $rolData = $stmtRol->get_result()->fetch_assoc();

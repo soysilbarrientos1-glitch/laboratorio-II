@@ -45,61 +45,62 @@ require_once __DIR__ . '/includes/db.php';
   </nav>
 </header>
 
-<!-- ... código anterior ... -->
-
 <!-- CONTENIDO PRINCIPAL -->
 <main>
   <section class="main-section">
-    <aside class="aside">
-      <img src="Imagenes/salon.jpg" alt="Interior del Salón" class="aside-image">
-    </aside>
+    <div class="welcome-card">
+      <!-- Imagen -->
+      <div class="welcome-image">
+        <img src="Imagenes/portada.jpg" alt="Interior del Salón" class="image-full">
+      </div>
 
-    <div class="content">
-      <h2 class="welcome-title">Bienvenidos</h2>
-      <p>Llevamos 4 años realzando tu belleza natural con manicures y pedicures impecables, diseños únicos y esmaltado semipermanente de calidad.</p>
-      <p>Ofrecemos precios accesibles, atención personalizada y un ambiente acogedor y relajante.</p>
-      <p>Agenda tu cita hoy y descubre por qué somos tu destino favorito para manos y pies perfectos.</p>
+      <!-- Texto de bienvenida -->
+      <div class="welcome-text">
+        <h2 class="welcome-title">Bienvenidos</h2>
+        <p>Llevamos 4 años realzando tu belleza natural con manicures y pedicures impecables, diseños únicos y esmaltado semipermanente de calidad.</p>
+        <p>Ofrecemos precios accesibles, atención personalizada y un ambiente sereno y relajante.</p>
+        <p>Trabajamos exclusivamente con marcas reconocidas que garantizan durabilidad, color vibrante y un trato suave incluso para las uñas más sensibles. Nuestros esmaltados semipermanentes no contienen formaldehído, tolueno ni DBP, y nuestros tratamientos de manicura y pedicura incluyen aceites nutritivos, cremas hidratantes y limas de cerámica que respetan la estructura de tu uña.</p>
+        <p>Agenda tu cita hoy y descubre por qué somos tu destino favorito para manos y pies perfectos.</p>
+       <br>
+        <h3 class="destacados">Nuestros Servicios Destacados</h3>
+        <ul class="servicios-lista">
+          <?php
+          $sql = "SELECT nombre FROM servicios ORDER BY nombre";
+          $result = $conn->query($sql);
 
-  <h3 class="destacados">Nuestros Servicios Destacados</h3>
-      <ul class="servicios-lista">
-        <?php
-        $sql = "SELECT nombre FROM servicios ORDER BY nombre";
-        $result = $conn->query($sql);
+          if ($result && $result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                  echo "<li>" . htmlspecialchars($row['nombre']) . "</li>";
+              }
+          } else {
+              echo "<li>No hay servicios disponibles en este momento.</li>";
+          }
+          ?>
+        </ul>
 
-        if ($result && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<li>" . htmlspecialchars($row['nombre']) . "</li>";
-            }
-        } else {
-            echo "<li>No hay servicios disponibles en este momento.</li>";
-        }
-        ?>
-      </ul>
-
-      <?php if (!empty($_SESSION['user_id'])): ?>
-        <a href="cliente/agendar-cita.php" class="btn-primary">Agenda tu cita</a>
-      <?php else: ?>
-        <a href="login.php" class="btn-secondary">Inicia sesión para agendar tu cita</a>
-      <?php endif; ?>
+        <?php if (!empty($_SESSION['user_id'])): ?>
+          <a href="cliente/agendar-cita.php" class="btn-primary">Agenda tu cita</a>
+        <?php else: ?>
+          <a href="login.php" class="btn-secondary">Inicia sesión para agendar tu cita</a>
+        <?php endif; ?>
+      </div>
     </div>
   </section>
 </main>
+   
+    
 
 <!-- FOOTER FIJO -->
 <footer class="footer">
   <div class="footer-container">
-    <div class="social-icons">
-      <a href="https://www.instagram.com/semipermanentes_bymarie" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
-        <i class="fab fa-twitter"></i>
-      </a>
-    </div>
-    <div class="copyright">
+
+   <div class="social-icons">
+  <a href="https://www.instagram.com/semipermanentes_bymarie" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+ </div>
+
+        <div class="copyright">
       &copy; Flor Acosta & Mary Barrientos 2025 | Todos los derechos reservados
     </div>
   </div>

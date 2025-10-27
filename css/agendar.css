@@ -16,13 +16,19 @@ body {
   --card-bg: #ffffff;
 }
 
+/* Contenedor principal - responsivo */
 .main-content {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 25px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 600px) {
+  .main-content {
+    padding: 1rem;
+  }
 }
 
 .main-content h2 {
@@ -134,3 +140,152 @@ select, input[type="date"] {
   }
   .total .value { font-size: 1.2em; padding: 8px 14px; }
 }
+/* Contenedor principal - ocupa más espacio */
+.agendar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px; /* Aumentado de 20px a 30px */
+  width: 100%;
+  max-width: 1400px; /* Aumentado de 1200px a 1400px */
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem; /* Aumentado el padding */
+}
+
+/* Aside derecho - más alto y sin recortes */
+.aside {
+  flex: 0 0 28%;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  position: relative;
+  transition: transform 0.3s ease;
+  min-height: 500px; /* 👈 Asegura que el aside tenga altura mínima */
+}
+
+/* Imágenes en los asides - más grandes y sin recortes */
+.aside-img {
+  width: 100%;
+  height: 450px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.aside:hover .aside-img {
+  transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+
+/* Texto superpuesto en las imágenes */
+.aside-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.aside-overlay h3 {
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.aside-overlay p {
+  font-size: 1.05rem;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+
+/* Formulario central - más ancho */
+.form-section {
+  flex: 0 0 44%; /* Aumentado de 50% a 44% para equilibrar con los asides más anchos */
+  background: #fff;
+  padding: 3rem; /* Aumentado de 2.5rem a 3rem */
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  margin: 0 auto;
+}
+
+/* Estilos del formulario */
+.form-section h2 {
+  text-align: center;
+  color: #e91e63;
+  margin-bottom: 1.5rem;
+  font-size: 2rem; /* Aumentado de 1.8rem a 2rem */
+  font-weight: 700;
+}
+
+.form-section label {
+  display: block;
+  margin: 0.75rem 0 0.25rem 0;
+  font-weight: 600;
+  color: #333;
+  font-size: 1.1rem; /* Aumentado de 1.05rem a 1.1rem */
+}
+
+.form-section select,
+.form-section input {
+  width: 100%;
+  padding: 0.85rem; /* Aumentado de 0.75rem a 0.85rem */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1.05rem; /* Aumentado de 1rem a 1.05rem */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-section select:focus,
+.form-section input:focus {
+  border-color: #e91e63;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(233, 30, 99, 0.1);
+}
+
+.form-section .total {
+  text-align: center;
+  font-size: 1.3rem; /* Aumentado de 1.2rem a 1.3rem */
+  margin: 1.5rem 0;
+  color: #e91e63;
+  font-weight: 700;
+}
+
+.btn-confirmar {
+  width: 100%;
+  padding: 0.85rem; /* Aumentado de 0.75rem a 0.85rem */
+  background: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.15rem; /* Aumentado de 1.1rem a 1.15rem */
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-confirmar:hover {
+  background: #c2185b;
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+
+
+
+

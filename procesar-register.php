@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
 // ID del rol "cliente" (según tu tabla roles)
-$id_rol_cliente = 2;
+$id_rol_cliente = 1;
 
 // Insertar nuevo usuario
 $stmt = $conn->prepare("
