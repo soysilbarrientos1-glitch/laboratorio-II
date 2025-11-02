@@ -114,8 +114,15 @@ if ($stmt->execute()) {
             <p><strong>Hora:</strong> <?php echo htmlspecialchars($hora); ?></p>
             <p><strong>Total:</strong> $<?php echo number_format($total, 2); ?></p>
         </div>
+   
+     <!-- ✅ Botones de acción -->
+        <div class="acciones-cita" style="margin-top: 2rem;">
+            <a href="editar-cita.php?id=<?= $cita_id ?>" class="btn-editar" style="margin-right: 1rem;">✏️ Modificar Cita</a>
+            <a href="cancelar-cita.php?id=<?= $cita_id ?>" class="btn-cancelar" onclick="return confirm('¿Estás seguro de cancelar esta cita?')">❌ Cancelar Cita</a>
+        </div>
 
         <a href="../index.php" class="btn-primary">Volver al Inicio</a>
+        
     </main>
 
     <?php include '../includes/footer.php'; ?>

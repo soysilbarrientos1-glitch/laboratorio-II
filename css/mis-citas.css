@@ -1,0 +1,47 @@
+.main-content {
+  padding: 2rem;
+  background-color: #fff0f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: #d63384;
+  margin-bottom: 1rem;
+}
+
+.alert-exito {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 0.75rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.tabla-citas {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.tabla-citas th, .tabla-citas td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.btn-modificar, .btn-cancelar {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-modificar {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-cancelar {
+  background-color: #dc3545;
+  color: #fff;
+}
