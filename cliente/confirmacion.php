@@ -98,7 +98,9 @@ if ($stmt->execute()) {
 <head>
     <meta charset="UTF-8">
     <title>Confirmación - Semis by Marie</title>
-    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="css/header-footer.css">
+
 </head>
 <body>
     <?php include '../includes/header-cliente.php'; ?>

@@ -13,12 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['actualizar_estado']))
     $cita_id = filter_input(INPUT_POST, 'cita_id', FILTER_VALIDATE_INT);
     $nuevo_estado = $_POST['estado'] ?? '';
     if ($cita_id && in_array($nuevo_estado, ['confirmada', 'completada', 'cancelada'])) {
+        // Actualizar estado del turno
         $stmt = $conn->prepare("UPDATE citas SET estado = ? WHERE id_cita = ?");
         $stmt->bind_param("si", $nuevo_estado, $cita_id);
         $stmt->execute();
+
+        // Registrar log en logs_turnos
+        $usuario = $_SESSION['nombre'] ?? 'desconocido';
+        $accion = "Estado cambiado a '$nuevo_estado'";
+
+        $stmt_log = $conn->prepare("INSERT INTO logs_turnos (id_turno, usuario, accion, fecha) VALUES (?, ?, ?, ?)");
+        $stmt_log->bind_param("iss", $cita_id, $usuario, $accion);
+        $stmt_log->execute();
+
         $mensaje = "Estado actualizado correctamente.";
     }
 }
+
 
 // Construir consulta con filtros
 $fecha_filtro = $_GET['fecha'] ?? '';

@@ -1,6 +1,11 @@
 <?php
 session_start();
-session_destroy(); // Elimina todas las variables de sesión
-header("Location: index.php"); // Redirige a la página principal
-exit; // Asegura que el script se detenga aquí
-?>
+
+// Destruir todas las variables de sesión
+$_SESSION = [];
+session_unset();
+session_destroy();
+
+// Redirigir al login del administrador
+header("Location: login-admin.php");
+exit();
