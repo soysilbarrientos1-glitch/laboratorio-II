@@ -4,7 +4,7 @@ require_once '../includes/db.php';
 require_once '../includes/stats.php';
 
 requireRole(['administrador']);
-include '../includes/header.php';
+include '../includes/header-cliente.php'; // Este ya incluye el encabezado y el menú
 ?>
 
 <!DOCTYPE html>
@@ -16,27 +16,7 @@ include '../includes/header.php';
 </head>
 <body>
 
-<!-- header.php -->
-<header class="encabezado">
-  <div class="logo">
-    <img src="Imagenes/nuevologo.jpg" alt="Logo Semis by Marie" />
-  </div>
-  <div class="titulo">
-    <h1>Semipermanentes by Marie</h1>
-    <p>"Enamórate de un brillo que brille"</p>
-  </div>
-</header>
-
-
-<nav>
-  <a href="dashboard.php">Inicio</a>
-  <a href="gestion-servicios.php">Servicios</a>
-  <a href="gestion-usuarios.php">Usuarios</a>
-  <a href="gestion-turnos.php">Turnos</a>
-  <a href="ver-logs.php">Historial de Logs</a>
-  <a href="panel-secretaria.php">Panel de Secretaria</a>
-  <a href="../logout.php">Cerrar Sesión</a>
-</nav>
+<!-- No repetir el menú aquí, ya está en header.php -->
 
 <div class="welcome">
   <p>Bienvenida, <strong><?= htmlspecialchars($_SESSION['nombre'] ?? 'Usuario') ?></strong>!</p>
