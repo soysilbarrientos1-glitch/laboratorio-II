@@ -16,6 +16,73 @@ body {
   --card-bg: #ffffff;
 }
 
+/*header con el titulo del salon */
+.titulo-sitio {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--fucsia);
+  margin: 2rem 0 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 0 2px 4px rgba(212,106,140,0.2);
+  letter-spacing: 1px;
+}
+/* Encabezado principal */
+.navbar-cliente {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--pink-1);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-bottom: 2px solid var(--fucsia);
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.navbar-cliente .logo img {
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Título */
+.navbar-cliente h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--fucsia-2);
+  margin: 0 1rem;
+  flex: 1;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Menú de navegación */
+.nav-cliente {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-cliente a {
+  text-decoration: none;
+  color: var(--fucsia-2);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-cliente a:hover {
+  background-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255,77,166,0.2);
+}
+
+
+
+
+
 /* Contenedor principal - responsivo */
 .main-content {
   width: 100%;

@@ -78,6 +78,7 @@ $servicios = $result->fetch_all(MYSQLI_ASSOC);
               <p class="descripcion"><?php echo htmlspecialchars($s['descripcion']); ?></p>
               <p class="precio">Precio: $<?php echo number_format($s['precio'], 2); ?></p>
               <p class="duracion"><?php echo (int)($s['duracion_minutos'] ?? 0); ?> minutos</p>
+              <p class="tipo">Tipo: <?php echo htmlspecialchars($s['tipo']); ?></p>
             </div>
 
             <!-- Botón de agendar -->

@@ -13,7 +13,7 @@ $email = trim($_POST['email'] ?? '');
 $telefono = trim($_POST['telefono'] ?? '');
 $password = $_POST['password'] ?? '';
 
-// Validaciones
+// Validaciones agregas el campo nuevo
 if (empty($nombre) || empty($email) || empty($password)) {
     header("Location: register.php?error=Todos los campos son obligatorios.");
     exit();
@@ -41,7 +41,7 @@ $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 // ID del rol "cliente" (según tu tabla roles)
 $id_rol_cliente = 1;
 
-// Insertar nuevo usuario
+// Insertar nuevo usuario insertar el nuevo campo
 $stmt = $conn->prepare("
     INSERT INTO usuarios (nombre, email, telefono, password, id_rol, activo, fecha_registro)
     VALUES (?, ?, ?, ?, ?, 1, NOW())

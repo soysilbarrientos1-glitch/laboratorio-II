@@ -1,5 +1,3 @@
 <?php
-$contrasena_plana = "1234";
-$hash = password_hash($contrasena_plana, PASSWORD_DEFAULT);
-echo $hash;
+echo password_hash('claveNueva123', PASSWORD_DEFAULT);
 ?>

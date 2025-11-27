@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-// Variables del formulario
+// Variables del formulario aquí valido
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 

@@ -28,19 +28,24 @@
       </div>
     <?php endif; ?>
 
+<!--formulario de login-->
     <form method="POST" action="procesar-login.php">
+
       <div class="form-group">
         <label for="email">Correo Electrónico</label>
         <input type="email" id="email" name="email" required placeholder="tu@email.com">
       </div>
+
       <div class="form-group">
         <label for="password">Contraseña</label>
         <input type="password" id="password" name="password" required>
       </div>
+      
       <div class="form-group">
         <button type="submit" class="btn-primary">Iniciar Sesión</button>
       </div>
     </form>
+    
     <p class="text-center mt-3">
       ¿No tienes cuenta? <a href="register.php">Regístrate aquí</a>
     </p>

@@ -1,13 +1,7 @@
 <?php
 session_start();
-require_once '../includes/db.php';      // conexión segura
-require_once '../includes/auth.php';    // funciones de sesión y rol
-
-// Redirigir si ya está logueado como administrador
-if (isset($_SESSION['user_id']) && $_SESSION['rol'] === 'administrador') {
-    header("Location: dashboard.php");
-    exit;
-}
+require_once '../includes/db.php';
+require_once '../includes/auth.php';
 
 $error = '';
 
@@ -16,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clave = $_POST['clave'] ?? '';
 
     if ($email && $clave) {
-        // Consulta segura con JOIN para obtener rol
+        // Consulta segura con JOIN para obtener el rol
         $stmt = $conn->prepare("
             SELECT u.id_usuario, u.nombre, u.password, r.nombre_rol 
             FROM usuarios u 
@@ -28,34 +22,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $resultado = $stmt->get_result();
 
         if ($resultado && $resultado->num_rows === 1) {
-            $admin = $resultado->fetch_assoc();
+            $user = $resultado->fetch_assoc();
 
-            // Validación de rol y contraseña
-            if (
-                strtolower($admin['nombre_rol']) === 'administrador' &&
-                password_verify($clave, $admin['password'])
-            ) {
-                $_SESSION['user_id'] = $admin['id_usuario'];
-                $_SESSION['nombre'] = $admin['nombre'];
-                $_SESSION['rol'] = $admin['nombre_rol'];
-                header("Location: dashboard.php");
+            // Verificación segura de contraseña
+            if (password_verify($clave, $user['password'])) {
+                $_SESSION['user_id'] = $user['id_usuario'];
+                $_SESSION['nombre'] = $user['nombre'];
+                $_SESSION['rol'] = strtolower($user['nombre_rol']); // Normaliza el rol
+
+                // Redirección según rol
+                switch ($_SESSION['rol']) {
+                    case 'administrador':
+                        header('Location: dashboard.php');
+                        break;
+                    case 'secretaria':
+                        header('Location: panel-secretaria.php');
+                        break;
+                    case 'manicurista':
+                    case 'pedicurista':
+                        header('Location: panel-especialista.php');
+                        break;
+                    default:
+                        header('Location: acceso-denegado.php');
+                        break;
+                }
                 exit;
             }
         }
     }
 
-    // Si algo falla, mostrar mensaje genérico
+    // Mensaje de error genérico
     $error = "Correo o clave incorrectos";
 }
 ?>
 
-
-           
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Iniciar sesión - Admin</title>
+  <title>Iniciar sesión</title>
   <link rel="stylesheet" href="../css/login_admin.css">
   <style>
     body {
@@ -108,22 +113,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 
 <div class="login-box">
-  <h2>Admin - Iniciar sesión</h2>
+  <h2>Iniciar sesión</h2>
   <?php if ($error): ?>
     <div class="error"><?= htmlspecialchars($error) ?></div>
   <?php endif; ?>
 
-<form method="POST" autocomplete="off">
-  <label for="email" style="display:none;">Correo electrónico</label>
-  <input type="text" id="email" name="email" placeholder="Correo electrónico" required maxlength="100">
-
-  <label for="clave" style="display:none;">Contraseña</label>
-  <input type="password" id="clave" name="clave" placeholder="Contraseña" required maxlength="50">
-
-  <button type="submit">Ingresar</button>
-</form>
-
-  
+  <form method="POST" autocomplete="off">
+    <input type="text" id="email" name="email" placeholder="Correo electrónico" required maxlength="100">
+    <input type="password" id="clave" name="clave" placeholder="Contraseña" required maxlength="50">
+    <button type="submit">Ingresar</button>
+  </form>
 </div>
 
 </body>

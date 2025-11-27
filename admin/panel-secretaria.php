@@ -1,16 +1,10 @@
 <?php
-require_once '../includes/auth.php';
-require_once '../includes/db.php';
-requireRole(['secretaria']); // Solo secretarias acceden
+require_once '../includes/auth.php';     // Verifica si hay sesión activa
+require_once '../includes/db.php';       // Conexión a la base de datos
+requireRole(['secretaria']);             // Solo permite acceso si el rol es secretaria
 
-// Obtener citas
-$stmt = $conn->prepare("SELECT c.id_cita, c.fecha, c.hora, c.estado, 
-                               cli.nombre AS cliente, emp.nombre AS empleado, s.nombre AS servicio
-                        FROM citas c
-                        JOIN clientes cli ON c.id_cliente = cli.id_cliente
-                        JOIN empleados emp ON c.id_empleado = emp.id_empleado
-                        JOIN servicios s ON c.id_servicio = s.id_servicio
-                        ORDER BY c.fecha, c.hora");
+// Obtener citas directamente desde la tabla 'citas'
+$stmt = $conn->prepare("SELECT id_cita, fecha, hora, estado FROM citas ORDER BY fecha, hora");
 $stmt->execute();
 $result = $stmt->get_result();
 ?>
@@ -38,9 +32,6 @@ $result = $stmt->get_result();
             <tr>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Cliente</th>
-                <th>Especialista</th>
-                <th>Servicio</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
@@ -50,9 +41,6 @@ $result = $stmt->get_result();
             <tr>
                 <td><?php echo $cita['fecha']; ?></td>
                 <td><?php echo $cita['hora']; ?></td>
-                <td><?php echo htmlspecialchars($cita['cliente']); ?></td>
-                <td><?php echo htmlspecialchars($cita['empleado']); ?></td>
-                <td><?php echo htmlspecialchars($cita['servicio']); ?></td>
                 <td><?php echo $cita['estado']; ?></td>
                 <td class="acciones">
                     <form method="post" action="accion-estado.php">
@@ -71,4 +59,4 @@ $result = $stmt->get_result();
         </tbody>
     </table>
 </body>
-</html
+</html>

@@ -34,6 +34,7 @@ include '../includes/header.php';
   <a href="gestion-usuarios.php">Usuarios</a>
   <a href="gestion-turnos.php">Turnos</a>
   <a href="ver-logs.php">Historial de Logs</a>
+  <a href="panel-secretaria.php">Panel de Secretaria</a>
   <a href="../logout.php">Cerrar Sesión</a>
 </nav>
 

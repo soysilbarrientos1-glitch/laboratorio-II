@@ -97,35 +97,52 @@ if ($stmt->execute()) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
     <title>Confirmación - Semis by Marie</title>
-    
+
+    <link rel="stylesheet" href="../css/confirmacion.css">
+
     <link rel="stylesheet" href="css/header-footer.css">
 
 </head>
 <body>
+    
     <?php include '../includes/header-cliente.php'; ?>
 
-    <main class="main-content" style="padding: 2rem; text-align: center;">
-        <h2>✅ ¡Cita Agendada!</h2>
-        <p>Tu turno ha sido confirmado con éxito.</p>
+<main class="confirmacion-main">
+  <aside class="confirmacion-aside">
+    <img src="../Imagenes/confirmado.jpg" alt="Cita confirmada">
+    <div class="aside-overlay">
+      <h3>¡Gracias por elegirnos!</h3>
+      <p>Tu cita está agendada. Te esperamos con alegría.</p>
+    </div>
+  </aside>
 
-        <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 8px; margin: 1.5rem auto; max-width: 500px;">
-            <p><strong>Servicio:</strong> <?php echo htmlspecialchars($servicio_nombre); ?></p>
-            <p><strong>Especialista:</strong> <?php echo htmlspecialchars($especialista_nombre); ?></p>
-            <p><strong>Fecha:</strong> <?php echo htmlspecialchars($fecha); ?></p>
-            <p><strong>Hora:</strong> <?php echo htmlspecialchars($hora); ?></p>
-            <p><strong>Total:</strong> $<?php echo number_format($total, 2); ?></p>
-        </div>
-   
-     <!-- ✅ Botones de acción -->
-        <div class="acciones-cita" style="margin-top: 2rem;">
-            <a href="editar-cita.php?id=<?= $cita_id ?>" class="btn-editar" style="margin-right: 1rem;">✏️ Modificar Cita</a>
-            <a href="cancelar-cita.php?id=<?= $cita_id ?>" class="btn-cancelar" onclick="return confirm('¿Estás seguro de cancelar esta cita?')">❌ Cancelar Cita</a>
-        </div>
+  <section class="confirmacion-contenido">
+    <h2>✅ ¡Cita Agendada!</h2>
+    <p>Tu turno ha sido confirmado con éxito.</p>
 
-        <a href="../index.php" class="btn-primary">Volver al Inicio</a>
-        
-    </main>
+    <div class="detalle-cita">
+      <p><strong>Servicio:</strong> <?= htmlspecialchars($servicio_nombre) ?></p>
+      <p><strong>Especialista:</strong> <?= htmlspecialchars($especialista_nombre) ?></p>
+      <p><strong>Fecha:</strong> <?= htmlspecialchars($fecha) ?></p>
+      <p><strong>Hora:</strong> <?= htmlspecialchars($hora) ?></p>
+      <p><strong>Total:</strong> $<?= number_format($total, 2) ?></p>
+    </div>
+
+    <div class="acciones-cita">
+      <a href="editar-cita.php?id=<?= $cita_id ?>" class="btn-editar">✏️ Modificar Cita</a>
+      <a href="cancelar-cita.php?id=<?= $cita_id ?>" class="btn-cancelar" onclick="return confirm('¿Estás seguro de cancelar esta cita?')">❌ Cancelar Cita</a>
+    </div>
+
+    <a href="../index.php" class="btn-primary">Volver al Inicio</a>
+  </section>
+</main>
+
+
+
+      
+     
 
     <?php include '../includes/footer.php'; ?>
 </body>

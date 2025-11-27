@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/db.php';
+require_once '../includes/db.php';
 
 if (!isset($_SESSION['user_id']) || $_SESSION['rol'] !== 'cliente') {
     header("Location: ../login.php");
@@ -10,14 +10,24 @@ if (!isset($_SESSION['user_id']) || $_SESSION['rol'] !== 'cliente') {
 $id_cliente = $_SESSION['user_id'];
 $id_cita = $_GET['id'] ?? null;
 
-// Validar cita
-$stmt = $conn->prepare("SELECT * FROM citas WHERE id_cita = ? AND id_cliente = ? AND estado = 'confirmada'");
+if (!$id_cita || !is_numeric($id_cita)) {
+    echo "<p>ID de cita inválido.</p>";
+    exit();
+}
+
+// Validar que la cita sea futura y pertenezca al cliente
+$stmt = $conn->prepare("
+    SELECT * FROM citas 
+    WHERE id_cita = ? 
+      AND id_cliente = ? 
+      AND CONCAT(fecha, ' ', hora) > NOW()
+");
 $stmt->bind_param("ii", $id_cita, $id_cliente);
 $stmt->execute();
 $cita = $stmt->get_result()->fetch_assoc();
 
 if (!$cita) {
-    echo "<p>No se puede editar esta cita.</p>";
+    echo "<p>No se puede editar esta cita. Puede que ya haya pasado o no te pertenezca.</p>";
     exit();
 }
 

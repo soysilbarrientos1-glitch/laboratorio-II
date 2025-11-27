@@ -31,7 +31,7 @@ $especialistas = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 </head>
 <body>
 
-<?php include '../includes/header-cliente.php'; ?>
+  <?php include '../includes/header-cliente.php'; ?>
 
 <main class="main-content">
   <div class="agendar-container">
